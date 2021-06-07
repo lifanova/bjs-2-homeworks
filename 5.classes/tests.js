@@ -19,7 +19,7 @@ describe('Домашнее задание к занятию 2.3 «ООП в JS (
     it('починка печатного издания', () => {
       printItem.state = 90;
       printItem.fix();
-      expect(printItem.state).toEqual(100);
+      expect(printItem.state).toEqual(135);
     });  
     
     it('геттер для свойства state', () => {
