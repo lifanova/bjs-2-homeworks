@@ -13,7 +13,13 @@ class PrintEditionItem {
     }
 
     set state(curState) {
-        this._state = curState;
+        if (curState < 0) {
+            this._state = 0;
+        } else if (curState > 100) {
+            this._state = 100
+        } else {
+            this._state = curState;
+        }
     }
 
     get state() {
@@ -82,7 +88,7 @@ class Library {
     }
 
     findBookBy(type, value) {
-        
+
         for (let book of this.books) {
             if (book[type] == value) {
                 return book;
@@ -165,7 +171,7 @@ class StudentLog {
         if (this.classJournal[subject] == undefined) {
             this.classJournal[subject] = [];
         }
-        
+
         this.classJournal[subject].push(grade);
     }
 
@@ -195,7 +201,7 @@ class StudentLog {
         }
 
         let total = 0;
-        for (let curKey of keys) {            
+        for (let curKey of keys) {
             total += this.getAverageBySubject(curKey);
         }
 
