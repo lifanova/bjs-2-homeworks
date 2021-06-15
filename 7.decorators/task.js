@@ -12,8 +12,8 @@ function cachingDecoratorNew(func) {
     } else {
       let result = func(...args);
 
-      // если длина кэша >= 5, то обрезаем его
-      if (cache.length >= 5) {        
+      // если длина кэша > 5, то обрезаем его
+      if (cache.length > 5) {
         cache.shift();
       }
 
@@ -35,10 +35,43 @@ function cachingDecoratorNew(func) {
 
 
 
-function debounceDecoratorNew(func) {
-  // Ваш код
+function debounceDecoratorNew(func, ms) {
+  let flag = true;
+  let timeout = undefined;
+
+  //Сразу вызываем функцию
+  func();  
+  
+  return function() {
+    // Если flag не установлен
+    if (flag == false) {
+      return;
+    }
+
+    clearTimeout(timeout);
+    flag = false;
+    timeout = setTimeout(func, ms);
+   };
 }
 
-function debounceDecorator2(func) {
-  // Ваш код
+function debounceDecorator2(func, ms) {  
+  let flag = true;
+  let timeout = undefined;
+  // Счетчик вызовов
+  let count = 0;
+
+  //Сразу вызываем функцию
+  func();
+
+  return function () {
+    // Если flag не установлен
+    if (flag == false) {
+      return;
+    }
+
+    clearTimeout(timeout);
+    flag = false;
+    timeout = setTimeout(func, ms);
+    count++;    
+  };
 }
