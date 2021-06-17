@@ -97,7 +97,7 @@ class AlarmClock {
      */
     clearAlarms() {
         // останавливаем
-        stop();
+        this.stop();
         //удаляем все звонки
         this.alarmCollection = [];
     }
@@ -123,13 +123,14 @@ function testCase() {
     time = Date.now() + 120000;
     phoneAlarm.addClock(phoneAlarm.getFormattedTime(time), () => {
         console.log("Иди умываться!");
-        phoneAlarm.clearAlarms();  
-        phoneAlarm.printAlarms();    
+        phoneAlarm.clearAlarms();
+        phoneAlarm.printAlarms();
     }, 3);
 
     phoneAlarm.printAlarms();
 
     phoneAlarm.start();
+
 }
 
 testCase();
