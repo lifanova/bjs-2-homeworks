@@ -30,7 +30,7 @@ class AlarmClock {
             return false;
         }
 
-        let deleted = this.alarmCollection.splice(idx);
+        let deleted = this.alarmCollection.splice(idx, 1);
         return (deleted != null);
     }
 
